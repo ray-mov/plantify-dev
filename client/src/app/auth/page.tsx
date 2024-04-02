@@ -1,25 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import axios from "axios";
+import Router from "next/router";
+import useRequest from "../../hooks/useRequest";
 
 export default function Page() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const { doRequest, errors } = useRequest({
+    url: "/api/users/signup",
+    method: "post",
+    body: {
+      email,
+      password,
+    },
+  });
 
   const onSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    try {
-      const reponse = await axios.post("/api/users/signup", {
-        email,
-        password,
-      });
-      console.log(reponse.data);
-    } catch (error) {
-      setErrors(error.reponse.data);
-      Window.prototype.alert(error.reponse.data);
-    }
+    await doRequest();
+    Router.push("/");
   };
 
   return (
@@ -53,6 +53,15 @@ export default function Page() {
         >
           Sign Up
         </button>
+        {errors && (
+          <div>
+            {errors.map((error, index) => (
+              <ul key={index}>
+                <li>{error.message}</li>
+              </ul>
+            ))}
+          </div>
+        )}
       </div>
     </form>
   );
