@@ -10,8 +10,8 @@ import { signinRouter } from "./routes/signin.route";
 import { signoutRouter } from "./routes/signout.route";
 import { signupRouter } from "./routes/signup.route";
 
-import errorHandler from "./middlewares/errorHandler.middleware";
-import NotFoundError from "./utilities/errors/notFoundError";
+import {errorHandler} from "@m9devs/common";
+import {NotFoundError} from "@m9devs/common";
 
 const app = express();
 app.set('trust proxy', true);   // express will be behind niginx 

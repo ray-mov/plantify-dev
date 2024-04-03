@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { currentUser } from "../middlewares/currentuser.middleware";
-import { authRequired } from "../middlewares/authrequired.moddleware";
+import { currentUser } from "@m9devs/common";
+import { authRequired } from "@m9devs/common";
 const router = Router()
 
 

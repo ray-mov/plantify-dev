@@ -2,9 +2,9 @@ import { Router, Request, Response } from "express";
 import { body} from "express-validator";
 import jwt from "jsonwebtoken";
 
-import { BadRequestError } from "../utilities/errors/badRequestError";
+import { BadRequestError } from "@m9devs/common";
 import { User } from "../models/user.model";
-import { validationRequest } from "../middlewares/validateRequest.middleware";
+import { validationRequest } from "@m9devs/common";
 
 const router = Router()
 router.post('/api/users/signup', [
