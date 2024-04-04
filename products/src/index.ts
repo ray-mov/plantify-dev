@@ -9,13 +9,12 @@ const startService  = async () => {
   if(!process.env.JWT_SECRET){
     throw new Error("JWT_SECRET not available")
   }
-    if(!process.env.MONGO_URL){
+   if(!process.env.MONGO_URL){
     throw new Error("MONGO_URL not available")
   }
 
-
   try {
-    await mongoose.connect(process.env.MONGO_URL,{
+    await mongoose.connect(process.env.MONGO_URL, {
   })
   console.log('db connected: auth service');
     

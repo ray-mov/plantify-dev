@@ -16,6 +16,14 @@ build:
         manual:
           - src: "src/**/*.ts"
             dest: .
+    - image: plantify/products
+      context: products
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.tsx"
+            dest: .
     - image: plantify/client
       context: client
       docker:
